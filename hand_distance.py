@@ -3,7 +3,7 @@ from cvzone.HandTrackingModule import HandDetector
 import math
 import numpy as np
 import cvzone
-import pyfirmata
+from pyfirmata import util, Arduino
 import time
 
 #Webcam
@@ -20,8 +20,8 @@ x=[300,245,200,170,145,130,112,103,93,87,80,75,70,67,62,59,57]
 y=[20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100]
 coff=np.polyfit(x,y,2)
 
-board=pyfirmata.Arduino('COM5')
-it=pyfirmata.util.Iterator(board)
+board=Arduino('COM5')
+it=util.Iterator(board)
 it.start()
 servo_theta=board.get_pin('d:9:s')
 servo_phi=board.get_pin('d:10:s')
